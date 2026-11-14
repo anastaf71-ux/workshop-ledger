@@ -14,7 +14,9 @@ def main():
         window.refresh_all()
         window.close()
         db.close()
-        print("UI self-test passed")
+        # A PyInstaller --windowed executable has no stdout on Windows.
+        if sys.stdout is not None:
+            print("UI self-test passed")
         return 0
     db = Database()
     try:
